@@ -60,7 +60,7 @@ function getConvertSetting() {
         bit: document.querySelector('input[name="bit"]:checked').value,
         invert: document.getElementById('invert').checked,
     }
-    // Goへデータを渡す
+    // グレースケールへ変換
     window.convertImage(convertSetting);
 }
 
@@ -68,17 +68,19 @@ function showOutputImage(isSuccess, message, imageData) {
     if (!isSuccess) {
         errorMessage(message);
         outputView.src = 'asset/svg/output.svg';
+        outputView.style.cursor = 'default';
+        outputView.onclick = null;
         return;
     }
     const blob = new Blob([imageData], { type: 'image/png' });
     outputView.src = URL.createObjectURL(blob);
     outputView.style.cursor = 'pointer';
-    outputView.addEventListener('click', () => {
+    outputView.onclick = () => {
         const a = document.createElement('a');
         a.href = outputView.src;
         a.download = fileName;
         a.click();
-    })
+    };
 }
 
 // エラーテキストを表示
