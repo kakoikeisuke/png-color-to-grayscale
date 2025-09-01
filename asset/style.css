@@ -1,12 +1,13 @@
 :root {
     --content-color: #222222;
     --background-color: #dddddd;
-    --alert-color: #ff0000;
+    --disabled-color: #999999;
 }
 @media (prefers-color-scheme: dark) {
     :root {
         --content-color: #dddddd;
         --background-color: #222222;
+        --disabled-color: #555555;
     }
 }
 html, body {
@@ -27,7 +28,7 @@ header p, header a {
 main {
     display: flex;
     justify-content: space-evenly;
-    margin: 0;
+    margin: 2rem 0 0 0;
     padding: 0;
 }
 p, h1, h2, h3, h4, h5, h6, a {
@@ -91,6 +92,40 @@ img {
     cursor: pointer;
     border: 1px solid var(--content-color);
 }
+.close-button:hover {
+    color: var(--background-color);
+    background-color: var(--content-color);
+}
+
+input:disabled {
+    cursor: not-allowed;
+}
+
+input[type="number"] {
+    -moz-appearance: textfield;
+    &::-webkit-inner-spin-button,
+    &::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+    width: 20%;
+    margin: 0.5rem 2rem 0 0;
+    padding: 0.5rem;
+    background-color: var(--background-color);
+    border: 1px solid var(--content-color);
+    outline: none;
+    color: var(--content-color);
+    text-align: right;
+    font-weight: bold;
+}
+input[type="number"]:focus {
+    color: var(--background-color);
+    background-color: var(--content-color);
+}
+input[type="number"]:disabled {
+    color: var(--disabled-color);
+    border: 1px solid var(--disabled-color);
+}
 
 /* ラジオボタン */
 .radioItem {
@@ -108,7 +143,7 @@ img {
     position: relative;
     width: 20px;
     height: 20px;
-    border: 1px solid #000000;
+    border: 1px solid var(--content-color);
     border-radius: 9999px;
     cursor: pointer;
 }
@@ -120,7 +155,7 @@ img {
     height: 15px;
     margin: auto;
     border-radius: 9999px;
-    background-color: #000000;
+    background-color: var(--content-color);
 }
 
 /* チェックボックス */
@@ -140,11 +175,11 @@ img {
     position: relative;
     width: 20px;
     height: 20px;
-    border: 1px solid #000000;
+    border: 1px solid var(--content-color);
     cursor: pointer;
 }
 .checkbox:checked {
-    background-color: #000000;
+    background-color: var(--content-color);
 }
 .checkbox:checked::after {
     content: "";
@@ -153,7 +188,7 @@ img {
     left: 3px;
     width: 12px;
     height: 6px;
-    border-bottom: 2px solid #ffffff;
-    border-left: 2px solid #ffffff;
+    border-bottom: 2px solid var(--background-color);
+    border-left: 2px solid var(--background-color);
     transform: rotate(-45deg);
 }

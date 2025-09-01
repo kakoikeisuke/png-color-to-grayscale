@@ -19,6 +19,7 @@
     <img src="asset/svg/input.svg" alt="input color png image" id="input-view">
     <div id="convert-option">
         <div class="option-div">
+            <p>変換に使用するチャンネル</p>
             <label for="rgb-channel" class="radioItem">
                 <input type="radio" id="rgb-channel" name="channel" value="rgb-channel" class="radioButton" checked>
                 RGB
@@ -41,6 +42,22 @@
             </label>
         </div>
         <div class="option-div">
+            <p>加重平均（RGB使用時のみ）</p>
+            <label for="r-weight">
+                R
+                <input type="number" id="r-weight" name="r-weight" value="1" class="weight-input">
+            </label>
+            <label for="g-weight">
+                G
+                <input type="number" id="g-weight" name="g-weight" value="1" class="weight-input">
+            </label>
+            <label for="b-weight">
+                B
+                <input type="number" id="b-weight" name="b-weight" value="1" class="weight-input">
+            </label>
+        </div>
+        <div class="option-div">
+            <p>出力するグレースケールのbit数</p>
             <label for="bit-8" class="radioItem">
                 <input type="radio" id="bit-8" name="bit" value="bit-8" class="radioButton" checked>
                 8 bit
@@ -51,21 +68,9 @@
             </label>
         </div>
         <div class="option-div">
-            <p>加重平均（RGB使用時のみ）</p>
-            <label for="r-weight">
-                <input type="number" id="r-weight" name="r-weight" value="1" disabled>
-            </label>
-            <label for="g-weight">
-                <input type="number" id="g-weight" name="g-weight" value="1" disabled>
-            </label>
-            <label for="b-weight">
-                <input type="number" id="b-weight" name="b-weight" value="1" disabled>
-            </label>
-        </div>
-        <div class="option-div">
             <label for="invert" class="checkboxItem">
                 <input type="checkbox" id="invert" name="invert" class="checkbox">
-                反転
+                白黒反転
             </label>
         </div>
     </div>
