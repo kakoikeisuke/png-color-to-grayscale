@@ -1,0 +1,29 @@
+:root {
+    --content-color: #222222;
+    --background-color: #dddddd;
+}
+@media (prefers-color-scheme: dark) {
+    :root {
+        --content-color: #dddddd;
+        --background-color: #222222;
+    }
+}
+
+body {
+    color: var(--content-color);
+    background-color: var(--background-color);
+}
+main {
+    display: flex;
+    justify-content: space-evenly;
+}
+p, h1, h2, h3, h4, h5, h6, a {
+    color: var(--content-color);
+}
+img {
+    aspect-ratio: 1;
+    object-fit: contain;
+}
+.hide-content {
+    display: none;
+}
