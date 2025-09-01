@@ -1,4 +1,5 @@
 let file;
+let fileName;
 const inputView =document.getElementById('input-view');
 const inputFile = document.getElementById('input-file');
 inputView.addEventListener('click', () => {
@@ -37,7 +38,15 @@ function handleImageCheck(isDecoded, isNotGrayscale) {
         inputFile.value = '';
         return;
     }
+    // 画像をimg要素に適用
     inputView.src = URL.createObjectURL(file);
+    // ファイルネームを格納
+    fileName = file.name;
+    
+    getConvertSetting();
+}
+
+function getConvertSetting() {
 }
 
 // エラーテキストを表示

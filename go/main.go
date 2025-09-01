@@ -13,7 +13,7 @@ func main() {
 	<-make(chan struct{})
 }
 
-func checkColorModel(this js.Value, args []js.Value) interface{} {
+func checkColorModel(_ js.Value, args []js.Value) interface{} {
 	// 第1引数(Uint8Array)を取得
 	uint8Array := args[0]
 	// JavaScriptでグローバルに定義されたコールバック関数を取得
@@ -26,8 +26,6 @@ func checkColorModel(this js.Value, args []js.Value) interface{} {
 	// バイトデータから画像をデコード
 	img, _, err := image.Decode(bytes.NewReader(data))
 	if err != nil {
-		// デコードに失敗したら、JavaScriptのコンソールにエラーを出力
-		js.Global().Get("console").Call("error", "Failed to decode image:", err.Error())
 		// isDecoded: false, isNotGrayscale: false をJSに渡す
 		handleImageCheck.Invoke(false, false)
 		return nil
