@@ -1,6 +1,8 @@
 let file;
 let fileName;
+let fileData;
 const inputView =document.getElementById('input-view');
+const outputView = document.getElementById('output-view');
 const inputFile = document.getElementById('input-file');
 inputView.addEventListener('click', () => {
     inputFile.click();
@@ -19,6 +21,7 @@ inputFile.addEventListener('change', (event) => {
     const reader = new FileReader();
     reader.onload = () => {
         const uint8Array = new Uint8Array(reader.result);
+        fileData = uint8Array;
         window.checkColorModel(uint8Array);
     };
     reader.readAsArrayBuffer(file);
@@ -48,6 +51,27 @@ function handleImageCheck(isDecoded, isNotGrayscale) {
 }
 
 function getConvertSetting() {
+    const convertSetting = {
+        fileData: fileData,
+        channel: document.querySelector('input[name="channel"]:checked').value,
+        rWeight: parseFloat(document.getElementById('r-weight').value),
+        gWeight: parseFloat(document.getElementById('g-weight').value),
+        bWeight: parseFloat(document.getElementById('b-weight').value),
+        bit: document.querySelector('input[name="bit"]:checked').value,
+        invert: document.getElementById('invert').checked,
+    }
+    // Goへデータを渡す
+    window.convertImage(convertSetting);
+}
+
+function showOutputImage(isSuccess, message, imageData) {
+    if (!isSuccess) {
+        errorMessage(message);
+        outputView.src = 'asset/svg/output.svg';
+        return;
+    }
+    const blob = new Blob([imageData], { type: 'image/png' });
+    outputView.src = URL.createObjectURL(blob);
 }
 
 // エラーテキストを表示
