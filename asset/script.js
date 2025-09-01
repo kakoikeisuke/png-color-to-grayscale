@@ -1,13 +1,11 @@
-// 左の画像ビューをクリックすると, 画像を選択するinputに飛ぶ
+let file;
 const inputView =document.getElementById('input-view');
 const inputFile = document.getElementById('input-file');
 inputView.addEventListener('click', () => {
     inputFile.click();
 });
-
-// 画像が入力されると, 画像がpng画像か確認
 inputFile.addEventListener('change', (event) => {
-    const file = event.target.files[0];
+    file = event.target.files[0];
     if (!file) {
         errorMessage("正常に画像が読み込まれませんでした。");
         return;
@@ -17,11 +15,34 @@ inputFile.addEventListener('change', (event) => {
         inputFile.value = '';
         return;
     }
-    errorMessage("正常に読み込まれました。");
+    const reader = new FileReader();
+    reader.onload = () => {
+        const uint8Array = new Uint8Array(reader.result);
+        window.checkColorModel(uint8Array);
+    };
+    reader.readAsArrayBuffer(file);
 });
 
-// エラーがあった際の表示
+// Goから呼び出される
+function handleImageCheck(isDecoded, isNotGrayscale) {
+    // デコードできたか
+    if (!isDecoded) {
+        errorMessage("正常に画像が読み込まれませんでした。");
+        inputFile.value = '';
+        return;
+    }
+    // グレースケールではないか
+    if (!isNotGrayscale) {
+        errorMessage("選択された画像はすでにグレースケール画像です。");
+        inputFile.value = '';
+        return;
+    }
+    inputView.src = URL.createObjectURL(file);
+}
+
+// エラーテキストを表示
 function errorMessage(message) {
+    closeErrorMessage();
     const backgroundFilter = document.createElement("div");
     backgroundFilter.className = "background-filter";
     document.body.appendChild(backgroundFilter);
@@ -42,9 +63,15 @@ function errorMessage(message) {
         }
     });
 }
+// エラーテキストを削除
 function closeErrorMessage() {
     const backgroundFilter = document.querySelector(".background-filter");
     if (backgroundFilter) {
         backgroundFilter.remove();
     }
 }
+(async () => {
+    const go = new Go();
+    const result = await WebAssembly.instantiateStreaming(fetch('asset/main.wasm'), go.importObject);
+    await go.run(result.instance);
+})();
