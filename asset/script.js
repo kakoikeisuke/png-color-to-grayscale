@@ -44,7 +44,7 @@ function handleImageCheck(isDecoded, isNotGrayscale) {
     // 画像をimg要素に適用
     inputView.src = URL.createObjectURL(file);
     // ファイルネームを格納
-    // ファイルネームが有効かどうかが実質的な変換準備の確認になる
+    // ファイルネームが有効かどうかが実質的な変換準備の確認
     fileName = file.name;
     
     getConvertSetting();
