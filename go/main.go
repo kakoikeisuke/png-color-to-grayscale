@@ -32,7 +32,7 @@ func convertImage(_ js.Value, args []js.Value) interface{} {
 	bit := settings.Get("bit").String()
 	invert := settings.Get("invert").Bool()
 
-	// TODO: ここで受け取ったデータを使って画像変換処理を実装します
+	// ここで受け取ったデータを使って画像変換処理を実装します
 	js.Global().Get("console").Call("log", "Go received channel:", channel)
 	js.Global().Get("console").Call("log", "Go received rWeight:", rWeight)
 	js.Global().Get("console").Call("log", "Go received gWeight:", gWeight)

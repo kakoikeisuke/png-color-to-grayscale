@@ -72,6 +72,13 @@ function showOutputImage(isSuccess, message, imageData) {
     }
     const blob = new Blob([imageData], { type: 'image/png' });
     outputView.src = URL.createObjectURL(blob);
+    outputView.style.cursor = 'pointer';
+    outputView.addEventListener('click', () => {
+        const a = document.createElement('a');
+        a.href = outputView.src;
+        a.download = fileName;
+        a.click();
+    })
 }
 
 // エラーテキストを表示
