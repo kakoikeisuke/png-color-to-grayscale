@@ -41,6 +41,7 @@ function handleImageCheck(isDecoded, isNotGrayscale) {
     // 画像をimg要素に適用
     inputView.src = URL.createObjectURL(file);
     // ファイルネームを格納
+    // ファイルネームが有効かどうかが実質的な変換準備の確認になる
     fileName = file.name;
     
     getConvertSetting();
@@ -84,3 +85,18 @@ function closeErrorMessage() {
     const result = await WebAssembly.instantiateStreaming(fetch('asset/main.wasm'), go.importObject);
     await go.run(result.instance);
 })();
+
+const convertOption = document.getElementById('convert-option');
+convertOption.addEventListener('change', (event) => {
+    // 加重平均の数値入力の切り替え
+    if (event.target.name === 'channel') {
+        const isRgbSelected = document.getElementById('rgb-channel').checked;
+        document.getElementById('r-weight').disabled = !isRgbSelected;
+        document.getElementById('g-weight').disabled = !isRgbSelected;
+        document.getElementById('b-weight').disabled = !isRgbSelected;
+    }
+    // 変換設定が変更されたらgetConvertSettingを呼び出す
+    if (fileName) {
+        getConvertSetting();
+    }
+});
