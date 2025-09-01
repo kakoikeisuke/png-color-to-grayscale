@@ -17,41 +17,56 @@
 <main>
     <input type="file" id="input-file" accept="image/png" class="hide-content">
     <img src="asset/svg/input.svg" alt="input color png image" id="input-view">
-    <div>
-        <div>
-            <p>変換の際に使用するチャンネル</p>
-            <input type="radio" id="rgb-channel" name="channel" value="rgb-channel" checked>
-            <label for="rgb-channel">RGB</label>
-            <input type="radio" id="r-channel" name="channel" value="r-channel">
-            <label for="r-channel">R</label>
-            <input type="radio" id="g-channel" name="channel" value="g-channel">
-            <label for="g-channel">G</label>
-            <input type="radio" id="b-channel" name="channel" value="b-channel">
-            <label for="b-channel">B</label>
-            <input type="radio" id="a-channel" name="channel" value="a-channel">
-            <label for="a-channel">アルファ</label>
+    <div id="convert-option">
+        <div class="option-div">
+            <label for="rgb-channel" class="radioItem">
+                <input type="radio" id="rgb-channel" name="channel" value="rgb-channel" class="radioButton" checked>
+                RGB
+            </label>
+            <label for="r-channel" class="radioItem">
+                <input type="radio" id="r-channel" name="channel" value="r-channel" class="radioButton">
+                R
+            </label>
+            <label for="g-channel" class="radioItem">
+                <input type="radio" id="g-channel" name="channel" value="g-channel" class="radioButton">
+                G
+            </label>
+            <label for="b-channel" class="radioItem">
+                <input type="radio" id="b-channel" name="channel" value="b-channel" class="radioButton">
+                B
+            </label>
+            <label for="a-channel" class="radioItem">
+                <input type="radio" id="a-channel" name="channel" value="a-channel" class="radioButton">
+                アルファ
+            </label>
         </div>
-        <div>
-            <input type="radio" id="bit-8" name="bit" value="bit-8" checked>
-            <label for="bit-8">8 bit</label>
-            <input type="radio" id="bit-16" name="bit" value="bit-16">
-            <label for="bit-16">16 bit</label>
+        <div class="option-div">
+            <label for="bit-8" class="radioItem">
+                <input type="radio" id="bit-8" name="bit" value="bit-8" class="radioButton" checked>
+                8 bit
+            </label>
+            <label for="bit-16" class="radioItem">
+                <input type="radio" id="bit-16" name="bit" value="bit-16" class="radioButton">
+                16 bit
+            </label>
         </div>
-        <div>
-            <input type="checkbox" id="weighted" name="method" value="weighted">
-            <label for="weighted">加重平均</label>
+        <div class="option-div">
+            <p>加重平均（RGB使用時のみ）</p>
+            <label for="r-weight">
+                <input type="number" id="r-weight" name="r-weight" value="1" disabled>
+            </label>
+            <label for="g-weight">
+                <input type="number" id="g-weight" name="g-weight" value="1" disabled>
+            </label>
+            <label for="b-weight">
+                <input type="number" id="b-weight" name="b-weight" value="1" disabled>
+            </label>
         </div>
-        <div>
-            <input type="number" id="r-weight" name="r-weight" value="1">
-            <label for="r-weight"></label>
-            <input type="number" id="g-weight" name="g-weight" value="1">
-            <label for="g-weight"></label>
-            <input type="number" id="b-weight" name="b-weight" value="1">
-            <label for="b-weight"></label>
-        </div>
-        <div>
-            <input type="checkbox" id="invert" name="invert">
-            <label for="invert">反転</label>
+        <div class="option-div">
+            <label for="invert" class="checkboxItem">
+                <input type="checkbox" id="invert" name="invert" class="checkbox">
+                反転
+            </label>
         </div>
     </div>
     <img src="asset/svg/output.svg" alt="output grayscale png image">
