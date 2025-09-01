@@ -106,8 +106,6 @@ func convertImage(_ js.Value, args []js.Value) interface{} {
 		return nil
 	}
 	encodedData := buf.Bytes()
-
-	// Goの[]byteをJavaScriptのUint8Arrayにコピー
 	jsUint8Array := js.Global().Get("Uint8Array").New(len(encodedData))
 	js.CopyBytesToJS(jsUint8Array, encodedData)
 	showOutputImage.Invoke(true, "", jsUint8Array)
@@ -119,10 +117,8 @@ func convertImage(_ js.Value, args []js.Value) interface{} {
 func checkColorModel(_ js.Value, args []js.Value) interface{} {
 	// 第1引数(Uint8Array)を取得
 	uint8Array := args[0]
-	// JavaScriptでグローバルに定義されたコールバック関数を取得
 	handleImageCheck := js.Global().Get("handleImageCheck")
 
-	// Goのバイトスライスにコピー
 	data := make([]byte, uint8Array.Get("length").Int())
 	js.CopyBytesToGo(data, uint8Array)
 
