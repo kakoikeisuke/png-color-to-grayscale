@@ -14,6 +14,15 @@
         </a>
     </p>
 </header>
+<section>
+    <p>加重平均を用いてRGB画像をグレースケールにする場合, 正規化してから計算されます。</p>
+    <p>参考値（クリックで数値を適用します。）</p>
+    <div class="template-div">
+        <p id="template-average">・単純なRGB平均値 > R:1 G:1 B:1</p>
+        <p id="template-hdtv">・HDTV(ITU-R BT.709) > R:0.213 G:0.715 B:0.072</p>
+        <p id="template-ntsc">・NTSC(ITU-R BT.601) > R:0.299 G:0.587 B:0.114</p>
+    </div>
+</section>
 <main>
     <input type="file" id="input-file" accept="image/png" class="hide-content">
     <img src="asset/svg/input.svg" alt="input color png image" id="input-view">
@@ -45,15 +54,15 @@
             <p>加重平均（RGB使用時のみ）</p>
             <label for="r-weight">
                 R
-                <input type="number" id="r-weight" name="r-weight" value="0.2126" class="weight-input" min="0" max="1">
+                <input type="number" id="r-weight" name="r-weight" value="0.213" class="weight-input" min="0" max="1" step="0.001">
             </label>
             <label for="g-weight">
                 G
-                <input type="number" id="g-weight" name="g-weight" value="0.7152" class="weight-input" min="0" max="1">
+                <input type="number" id="g-weight" name="g-weight" value="0.715" class="weight-input" min="0" max="1" step="0.001">
             </label>
             <label for="b-weight">
                 B
-                <input type="number" id="b-weight" name="b-weight" value="0.0722" class="weight-input" min="0" max="1">
+                <input type="number" id="b-weight" name="b-weight" value="0.072" class="weight-input" min="0" max="1" step="0.001">
             </label>
         </div>
         <div class="option-div">
