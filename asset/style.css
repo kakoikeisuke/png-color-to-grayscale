@@ -23,6 +23,8 @@ p, h1, h2, h3, h4, h5, h6, a {
 img {
     aspect-ratio: 1;
     object-fit: contain;
+    width: 30vw;
+    border: 1px solid var(--content-color);
 }
 .hide-content {
     display: none;
