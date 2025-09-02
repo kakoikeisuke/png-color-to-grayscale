@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>PNG Color to Grayscale</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="asset/style.css">
 </head>
 <body>
@@ -29,7 +30,7 @@
     <img src="asset/svg/input.svg" alt="input color png image" id="input-view">
     <div id="convert-option">
         <div class="option-div">
-            <p>変換に使用するチャンネル</p>
+            <p>変換に使用するチャンネル</p><br>
             <label for="rgb-channel" class="radioItem">
                 <input type="radio" id="rgb-channel" name="channel" value="rgb-channel" class="radioButton" checked>
                 RGB
@@ -52,7 +53,7 @@
             </label>
         </div>
         <div class="option-div">
-            <p>加重平均（RGB使用時のみ）</p>
+            <p>加重平均（RGB使用時のみ）</p><br>
             <label for="r-weight">
                 R
                 <input type="number" id="r-weight" name="r-weight" value="0.213" class="weight-input" min="0" max="1" step="0.001">
@@ -67,7 +68,7 @@
             </label>
         </div>
         <div class="option-div">
-            <p>出力するグレースケールのbit数</p>
+            <p>出力するグレースケールのbit数</p><br>
             <label for="bit-8" class="radioItem">
                 <input type="radio" id="bit-8" name="bit" value="bit-8" class="radioButton" checked>
                 8 bit

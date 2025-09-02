@@ -72,8 +72,12 @@ img {
     width: 25vw;
     font-size: 1.5rem;
 }
+#convert-option p, .option-div p {
+    margin: 0.5rem 0 0 0;
+    padding: 0;
+}
 .option-div {
-    margin: 2rem 0;
+    margin: 4rem 0;
     padding: 0;
 }
 .hide-content {
