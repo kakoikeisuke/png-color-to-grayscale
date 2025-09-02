@@ -2,7 +2,7 @@
 PNG形式のカラー画像をグレースケール画像に変換します。  
 こちらから使用することができます。  
 [https://kakoikeisuke.github.io/png-color-to-grayscale](https://kakoikeisuke.github.io/png-color-to-grayscale)
-
+![](README_resource/sample-animation.gif)
 ## 概要
 PNG画像を選択すると, ローカルでグレースケール画像に変換します。  
 変換結果の画像をクリックすると保存することができます。  
