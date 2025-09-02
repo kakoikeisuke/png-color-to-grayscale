@@ -1,7 +1,8 @@
 # PNG Color to Grayscale
 PNG形式のカラー画像をグレースケール画像に変換します。  
 こちらから使用することができます。  
-[https://kakoikeisuke.github.io/png-color-to-grayscale](https://kakoikeisuke.github.io/png-color-to-grayscale)
+[https://kakoikeisuke.github.io/png-color-to-grayscale](https://kakoikeisuke.github.io/png-color-to-grayscale)  
+
 ![](README_resource/sample-animation.gif)
 ## 概要
 PNG画像を選択すると, ローカルでグレースケール画像に変換します。  
@@ -17,4 +18,5 @@ PNG画像を選択すると, ローカルでグレースケール画像に変換
 ## その他
 - カラー画像ではなくグレースケール画像を読み込もうとするとエラーになります。
 - RGB平均から変換する場合, アルファチャンネルは考慮されません。
-- 参考値として記載されている加重平均の補正値はあくまで近似値です。
+- 記載されている加重平均の補正値はあくまで参考値です。
+- 加重平均の補正値は処理時に自動で正規化されます。
