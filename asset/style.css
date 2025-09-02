@@ -63,6 +63,7 @@ img {
     object-fit: contain;
     width: 30vw;
     border: 1px solid var(--content-color);
+    align-self: center;
 }
 #input-view {
     cursor: pointer;
@@ -146,7 +147,6 @@ input[type="number"]:disabled {
     border: 1px solid var(--disabled-color);
 }
 
-/* ラジオボタン */
 .radioItem {
     display: inline-flex;
     align-items: center;
@@ -176,8 +176,6 @@ input[type="number"]:disabled {
     border-radius: 9999px;
     background-color: var(--content-color);
 }
-
-/* チェックボックス */
 .checkboxItem {
     display: flex;
     align-items: center;
@@ -210,4 +208,27 @@ input[type="number"]:disabled {
     border-bottom: 2px solid var(--background-color);
     border-left: 2px solid var(--background-color);
     transform: rotate(-45deg);
+}
+
+@media (max-width: 768px) {
+    html, body {
+        font-size: 8px;
+    }
+    header, section {
+        margin: 0;
+        padding: 1rem;
+    }
+    p {
+        display: inline-block;
+    }
+    img {
+        width: 45vw;
+    }
+    #convert-option {
+        width: 90vw;
+        font-size: 1.5rem;
+    }
+    input[type="number"] {
+        width: 6rem;
+    }
 }

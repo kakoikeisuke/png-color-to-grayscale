@@ -165,3 +165,27 @@ templateNtsc.addEventListener('click', () => {
         getConvertSetting();
     }
 })
+
+// 画面幅に応じて要素の配置を変更する
+const mediaQuery = window.matchMedia('(max-width: 768px)');
+const convertOptionElement = document.getElementById('convert-option');
+const bottomSectionElement = document.getElementById('bottom-section');
+
+// PC表示時の場所を保存しておく
+const originalParent = convertOptionElement.parentNode;
+const originalNextSibling = convertOptionElement.nextSibling;
+
+// 画面幅に応じて要素を移動させる関数
+function handleLayoutChange(e) {
+    if (e.matches) {
+        // 画面幅が768px以下の場合: main要素の子要素にする
+        bottomSectionElement.appendChild(convertOptionElement);
+    } else {
+        // 画面幅が768pxより大きい場合: 元の場所に戻す
+        originalParent.insertBefore(convertOptionElement, originalNextSibling);
+    }
+}
+// 画面サイズが変更された時に handleLayoutChange を呼び出すように設定
+mediaQuery.addEventListener('change', handleLayoutChange);
+// ページ読み込み時に一度実行して、初期表示を正しく設定する
+handleLayoutChange(mediaQuery);
